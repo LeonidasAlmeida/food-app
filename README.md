@@ -1,0 +1,6 @@
+npm i express
+npm i nodemon
+npm i colors
+npm i morgan
+npm i dotenv
+npm i cors
