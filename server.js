@@ -3,6 +3,7 @@ const colors = require('colors')
 const dotenv = require('dotenv');
 const morgan = require("morgan");
 const cors = require('cors');
+const connectDB = require("./config/db");
 
 //rest object
 const app = express();
@@ -13,7 +14,8 @@ app.use(express.json())
 app.use(morgan("dev"))
 //configuration of dotenv
 dotenv.config()
-
+//connect to database
+connectDB()
 //route
 //URL => http://localhost:8080
 app.use('/api/v1/test', require('./routes/testRoute'))
@@ -29,5 +31,5 @@ const PORT = process.env.PORT || 5000;
 
 //listen
 app.listen(PORT, () => {
-    console.log("Server Running".white.bgMagenta)
+    console.log("Server Running".white.bgBlue)
 });

@@ -4,3 +4,4 @@ npm i colors
 npm i morgan
 npm i dotenv
 npm i cors
+npm i mongoose
