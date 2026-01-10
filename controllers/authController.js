@@ -37,4 +37,40 @@ const registerController = async (req,res)=>{
     })
 }
 }
-module.exports = {registerController}
+
+//controller login
+const loginController = async (req, res)=>{
+ try {
+    //reading data
+    const {email,password} = req.body
+    //validation
+    if(!email || !password){
+        return res.status(500).send({
+            success:false,
+            message:"provide login or email "
+        })
+    }
+    //validation os user
+    const user = await userModel.findOne({email:email, password:password})
+    if(!user){
+        return res.status(404).send({
+            success:false,
+            message:"login or password is incorrect"
+        })
+    }
+    res.status(200).send({
+        success:true,
+        message:"Success login",
+        user
+    })
+ } catch (error) {
+    console.log(error)
+    res.status(500).send({
+        success:false,
+        message:"Error in API Login"
+    })
+ }
+}
+
+
+module.exports = {registerController, loginController}
