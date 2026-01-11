@@ -5,3 +5,7 @@ npm i morgan
 npm i dotenv
 npm i cors
 npm i mongoose
+npm i bcryptjs
+npm i jsonwebtoken
+
+
