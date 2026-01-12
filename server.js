@@ -4,6 +4,7 @@ const dotenv = require('dotenv');
 const morgan = require("morgan");
 const cors = require('cors');
 const connectDB = require("./config/db");
+const authMiddleware = require("./middlewares/authMiddleware");
 
 //rest object
 const app = express();
@@ -20,7 +21,7 @@ connectDB()
 //URL => http://localhost:8080
 app.use('/api/v1/test', require('./routes/testRoute'))
 app.use('/api/v1/auth', require('./routes/authRoutes'))
-app.use('/api/v1/user', require('./routes/userRouter'))
+app.use('/api/v1/user', authMiddleware,require('./routes/userRouter'))
 
 app.get("/", (req, res)=>{
     return res

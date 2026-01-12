@@ -1,4 +1,4 @@
-const getUserControlle = async (req, res)=>{
+const getUserController = async (req, res)=>{
     try {
         res.status(200).send({
             success:true,
