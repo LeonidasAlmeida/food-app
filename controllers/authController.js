@@ -6,9 +6,9 @@ const registerController = async (req,res)=>{
 
     try {
     //reading data
-    const {userName,email,password,phone,address} = req.body
+    const {userName,email,password,phone,address,answer} = req.body
     //validation
-    if(!userName || !email || !password || !phone || !address){
+    if(!userName || !email || !password || !phone || !address || !answer){
         return res.status(500).send({
             success:false,
             message:"Please registe all field"
@@ -33,7 +33,8 @@ const registerController = async (req,res)=>{
         email,
         password:hashedPassWord,
         phone,
-        address
+        address,
+        answer
     })
     res.status(201).send({
         success:true,
