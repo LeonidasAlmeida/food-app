@@ -12,6 +12,7 @@ const authMiddleware = async (req,res,next)=>{
                 req.body.id = decode.id
                 next()
             }
+            
         })
 
     } catch (error) {
@@ -22,5 +23,6 @@ const authMiddleware = async (req,res,next)=>{
         })
     }
 }
+
 
 module.exports = authMiddleware
