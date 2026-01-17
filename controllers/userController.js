@@ -99,4 +99,23 @@ const updatePasswordController = async(req, res) =>{
         rs.status(500).send({success:false,message:'Error in API'})
     }
 }
-module.exports = { getUserController, updateUserController, resetPasswordController,updatePasswordController}
+//delete perfil
+const deleteUserController = async(req,res)=>{
+    try {
+        await userModel.findByIdAndDelete(req.params.id)
+        res.status(200).send({success:true,message:'Deleted with successfully'})
+    } catch (error) {
+        console.log(error)
+        res.status(500).send({success:false,message:'Error in API delete user'})
+    }
+}
+
+
+
+
+
+
+
+
+
+module.exports = { getUserController, updateUserController, resetPasswordController,updatePasswordController, deleteUserController}
