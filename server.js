@@ -23,12 +23,13 @@ app.use('/api/v1/test', require('./routes/testRoute'))
 app.use('/api/v1/auth', require('./routes/authRoutes'))
 app.use('/api/v1/user', authMiddleware, require('./routes/userRouter'))
 app.use('/api/v1/restaurante', authMiddleware,require('./routes/restaurantRoutes'))
-
-app.get("/", (req, res)=>{
+app.use('/api/v1/category',authMiddleware,require('./routes/categoryRoutes'))
+app.use("/", (req, res)=>{
     return res
     .status(200)
     .send("<h1> Welcome to food Server APP </h1>")
 });
+
 
 //PORT
 const PORT = process.env.PORT || 5000;
