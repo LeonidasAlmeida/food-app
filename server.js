@@ -24,6 +24,7 @@ app.use('/api/v1/auth', require('./routes/authRoutes'))
 app.use('/api/v1/user', authMiddleware, require('./routes/userRouter'))
 app.use('/api/v1/restaurante', authMiddleware,require('./routes/restaurantRoutes'))
 app.use('/api/v1/category',authMiddleware,require('./routes/categoryRoutes'))
+app.use('/api/v1/food',authMiddleware,require('./routes/foodRoutes'))
 app.use("/", (req, res)=>{
     return res
     .status(200)
