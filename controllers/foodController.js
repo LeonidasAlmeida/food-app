@@ -42,4 +42,49 @@ const createFoodController = async (req,res)=>{
     }
 }
 
-module.exports ={createFoodController}
+const getAllFoodController = async (req, res)=>{
+    try {
+        //get all foods
+        const getAllFoods = await foodModel.find({})
+        //validations
+        if(!getAllFoods)res.status(500).send({success:false,message:'Error to get all foods'})
+        res.status(200).send({success:true,getAllFoods})
+    } catch (error) {
+        console.log(error)
+        res.status(500).send({success:false,message:'Error into API get ALL foods'})
+    }
+}
+
+const getFoodController = async (req, res)=>{
+    try {
+        const {id} = req.params
+          if(!id)res.status(500).send({success:false,message:'Error to get id food'})
+        //get  foods
+        const getFood = await foodModel.findById({_id:id})
+        //validations
+        if(!getFood)res.status(500).send({success:false,message:'Error to get one food'})
+        res.status(200).send({success:true,getFood})
+
+    } catch (error) {
+        console.log(error)
+        res.status(500).send({success:false,message:'Error into API GET  Food'})
+    }
+}
+
+const getFoodRestauranteController = async (req, res)=>{
+    try {
+        const {id} = req.params
+          if(!id)res.status(400).send({success:false,message:'Error to get id restaurante food'})
+        //get  foods
+        const getFood = await foodModel.find({restaurante: id})
+        //validations
+        if(!getFood)res.status(500).send({success:false,message:'Error to get one restaurante food'})
+
+        res.status(200).send({success:true,getFood})
+
+    } catch (error) {
+        console.log(error)
+        res.status(500).send({success:false,message:'Error into API GET restaurante Food'})
+    }
+}
+module.exports ={createFoodController, getAllFoodController, getFoodController,getFoodRestauranteController }
